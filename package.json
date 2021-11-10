@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BasileTrujillo/terraform-elastic-beanstalk-php.git"
+    "url": "git+https://github.com/joecritch/terraform-elastic-beanstalk-php.git"
   },
   "author": "[L0gIn] Basile Trujillo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BasileTrujillo/terraform-elastic-beanstalk-php/issues"
+    "url": "https://github.com/joecritch/terraform-elastic-beanstalk-php/issues"
   },
-  "homepage": "https://github.com/BasileTrujillo/terraform-elastic-beanstalk-php#readme",
+  "homepage": "https://github.com/joecritch/terraform-elastic-beanstalk-php#readme",
   "dependencies": {},
   "devDependencies": {
     "auto-changelog": "^1.4.6"

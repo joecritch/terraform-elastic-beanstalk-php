@@ -2,30 +2,30 @@
 ## App Variables
 ##################################################
 variable "aws_region" {
-  type    = "string"
+  type    = string
   default = "eu-west-1"
   description = "The AWS Region"
 }
 
 # Application
 variable "service_name" {
-  type    = "string"
+  type    = string
   description = "The application name"
 }
 variable "env" {
-  type    = "string"
+  type    = string
   default = "dev"
   description = "The environment (dev, stage, prod)"
 }
 
 # Instance
 variable "instance_type" {
-  type    = "string"
+  type    = string
   default = "t3.small"
   description = "The EC2 instance type"
 }
 variable "instance_volume_type" {
-  type    = "string"
+  type    = string
   default = "gp2"
   description = "Volume type (magnetic, general purpose SSD or provisioned IOPS SSD) to use for the root Amazon EBS volume attached to your environment's EC2 instances."
   # standard for magnetic storage
@@ -33,167 +33,167 @@ variable "instance_volume_type" {
   # io1 for provisioned IOPS SSD
 }
 variable "instance_volume_size" {
-  type    = "string"
+  type    = string
   default = "10"
   description = "Storage capacity of the root Amazon EBS volume in whole GB. Required if you set RootVolumeType to provisioned IOPS SSD."
   # 10 to 16384 GB for general purpose and provisioned IOPS SSD.
   # 8 to 1024 GB for magnetic.
 }
 variable "instance_volume_iops" {
-  type    = "string"
+  type    = string
   default = "100"
   description = "Desired input/output operations per second (IOPS) for a provisioned IOPS SSD root volume."
   # The maximum ratio of IOPS to volume size is 30 to 1. For example, a volume with 3000 IOPS must be at least 100 GB.
   # Value can be from 100 to 20000
 }
 variable "ssh_key_name" {
-  type    = "string"
+  type    = string
   default = "Ireland_VPC"
   description = "The EC2 SSH KeyPair Name"
 }
 variable "public_ip" {
-  type = "string"
+  type = string
   default = "false"
   description = "EC2 instances must have a public ip (true | false)"
 }
 variable "min_instance" {
-  type    = "string"
+  type    = string
   default = "1"
   description = "The minimum number of instances"
 }
 variable "max_instance" {
-  type    = "string"
+  type    = string
   default = "1"
   description = "The maximum number of instances"
 }
 variable "deployment_policy" {
-  type    = "string"
+  type    = string
   default = "Rolling"
   description = "The deployment policy"
   # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.rolling-version-deploy.html?icmpid=docs_elasticbeanstalk_console
 }
 variable "environmentType" {
-  type    = "string"
+  type    = string
   default = "LoadBalanced"
   description = "Set to SingleInstance to launch one EC2 instance with no load balancer."
 }
 
 # Load Balancing
 variable "loadBalancerType" {
-  type    = "string"
+  type    = string
   default = "classic"
   description = "The type of load balancer for your environment. (classic, application, network)"
 }
 variable "port" {
-  type    = "string"
+  type    = string
   default = "80"
   description = "The instance port"
 }
 variable "ssl_certificate_id" {
-  type    = "string"
+  type    = string
   default = ""
   description = "ARN of an SSL certificate to bind to the listener."
 }
 variable "healthcheck_url" {
-  type    = "string"
+  type    = string
   default = "/"
   description = "The path to which to send health check requests."
 }
 variable "healthcheck_healthy_threshold" {
-  type    = "string"
+  type    = string
   default = "3"
   description = "Consecutive successful requests before Elastic Load Balancing changes the instance health status."
 }
 variable "healthcheck_unhealthy_threshold" {
-  type    = "string"
+  type    = string
   default = "5"
   description = "Consecutive unsuccessful requests before Elastic Load Balancing changes the instance health status."
 }
 variable "healthcheck_interval" {
-  type    = "string"
+  type    = string
   default = "10"
   description = "The interval at which Elastic Load Balancing will check the health of your application's Amazon EC2 instances."
 }
 variable "healthcheck_timeout" {
-  type    = "string"
+  type    = string
   default = "5"
   description = "Number of seconds Elastic Load Balancing will wait for a response before it considers the instance nonresponsive."
 }
 
 variable "ignore_healthcheck" {
-  type    = "string"
+  type    = string
   default = "false"
   description = "Do not cancel a deployment due to failed health checks. (true | false)"
 }
 variable "healthreporting" {
-  type    = "string"
+  type    = string
   default = "basic"
   description = "Health reporting system (basic or enhanced). Enhanced health reporting requires a service role and a version 2 platform configuration."
 }
 variable "notification_topic_arn" {
-  type    = "string"
+  type    = string
   default = ""
   description = "Amazon Resource Name for the topic you subscribed to."
 }
 variable "enable_http" {
-  type = "string"
+  type = string
   default = "true"
   description = "Enable or disable default HTTP connection on port 80."
 }
 variable "enable_https" {
-  type = "string"
+  type = string
   default = "true"
   description = "Enable or disable HTTPS connection on port 443."
 }
 variable "elb_connection_timeout" {
-  type = "string"
+  type = string
   default = "60"
   description = "Number of seconds that the load balancer waits for any data to be sent or received over the connection."
 }
 
 # Auto Scaling
 variable "as_breach_duration" {
-  type = "string"
+  type = string
   default = "5"
   description = "Amount of time, in minutes, a metric can be beyond its defined limit (as specified in the UpperThreshold and LowerThreshold) before the trigger fires."
 }
 variable "as_lower_breach_scale_increment" {
-  type = "string"
+  type = string
   default = "-1"
   description = "How many Amazon EC2 instances to remove when performing a scaling activity."
 }
 variable "as_lower_threshold" {
-  type = "string"
+  type = string
   default = "2000000"
   description = "If the measurement falls below this number for the breach duration, a trigger is fired."
 }
 variable "as_measure_name" {
-  type = "string"
+  type = string
   default = "NetworkOut"
   description = "Metric used for your Auto Scaling trigger."
 }
 variable "as_period" {
-  type = "string"
+  type = string
   default = "5"
   description = "Specifies how frequently Amazon CloudWatch measures the metrics for your trigger."
 }
 variable "as_statistic" {
-  type = "string"
+  type = string
   default = "Average"
   description = "Statistic the trigger should use, such as Average."
 }
 variable "as_unit" {
-  type = "string"
+  type = string
   default = "Bytes"
   description = "Unit for the trigger measurement, such as Bytes."
 }
 variable "as_upper_breachs_scale_increment" {
-  type = "string"
+  type = string
   default = "1"
   description = "How many Amazon EC2 instances to add when performing a scaling activity."
 }
 variable "as_upper_threshold" {
-  type = "string"
+  type = string
   default = "6000000"
   description = "If the measurement is higher than this number for the breach duration, a trigger is fired."
 }
@@ -201,47 +201,47 @@ variable "as_upper_threshold" {
 # PHP Platform Options
 # Namespace: aws:elasticbeanstalk:container:php:phpini
 variable "eb_solution_stack_name" {
-  type    = "string"
+  type    = string
   default = "64bit Amazon Linux 2018.03 v2.8.4 running PHP"
   description = "The Elastic Beanstalk solution stack name"
 }
 variable "php_version" {
-  type    = "string"
+  type    = string
   default = "7.0"
   description = "The Elastic Beanstalk solution stack name"
 }
 variable "document_root" {
-  type    = "string"
+  type    = string
   default = "/"
   description = "Specify the child directory of your project that is treated as the public-facing web root."
 }
 variable "memory_limit" {
-  type    = "string"
+  type    = string
   default = "256M"
   description = "Amount of memory allocated to the PHP environment."
 }
 variable "zlib_php_compression" {
-  type    = "string"
+  type    = string
   default = "Off"
   description = "Specifies whether or not PHP should use compression for output."
 }
 variable "allow_url_fopen" {
-  type    = "string"
+  type    = string
   default = "On"
   description = "Specifies if PHP's file functions are allowed to retrieve data from remote locations, such as websites or FTP servers."
 }
 variable "display_errors" {
-  type    = "string"
+  type    = string
   default = "Off"
   description = "Specifies if error messages should be part of the output."
 }
 variable "max_execution_time" {
-  type    = "string"
+  type    = string
   default = "60"
   description = "Sets the maximum time, in seconds, a script is allowed to run before it is terminated by the environment."
 }
 variable "composer_options" {
-  type    = "string"
+  type    = string
   default = ""
   description = "Sets custom options to use when installing dependencies using Composer through composer.phar install."
   # For more information including available options, go to http://getcomposer.org/doc/03-cli.md#install.
@@ -249,31 +249,31 @@ variable "composer_options" {
 
 # Security
 variable "vpc_id" {
-  type    = "string"
+  type    = string
   description = "The ID for your VPC."
 }
 variable "vpc_subnets" {
-  type    = "string"
+  type    = string
   description = "The IDs of the Auto Scaling group subnet or subnets."
 }
 variable "elb_subnets" {
-  type    = "string"
+  type    = string
   description = "The IDs of the subnet or subnets for the elastic load balancer."
 }
 variable "security_groups" {
-  type    = "string"
+  type    = string
   default = "elasticbeanstalk-default"
   description = "Lists the Amazon EC2 security groups to assign to the EC2 instances in the Auto Scaling group in order to define firewall rules for the instances."
 }
 
 # Elastic File Storage (Environment variables)
 variable "efs_id" {
-  type    = "string"
+  type    = string
   default = ""
   description = "The EFS ID to put in an EB Environment variable called EFS_ID."
 }
 variable "efs_mount_directory" {
-  type    = "string"
+  type    = string
   default = ""
   description = "The EFS Mount Directory to put in an EB Environment variable called EFS_MOUNT_DIRECTORY."
 }

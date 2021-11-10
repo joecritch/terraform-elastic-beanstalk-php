@@ -2,15 +2,15 @@
 ## Your variables
 ##################################################
 variable "aws_region" {
-  type    = "string"
+  type    = string
   default = "eu-west-1"
 }
 variable "env" {
-  type = "string"
+  type = string
   default = "dev"
 }
 variable "service_name" {
-  type    = "string"
+  type    = string
   default = "php-app-test"
 }
 
@@ -32,7 +32,7 @@ resource "aws_elastic_beanstalk_application" "eb_app" {
 }
 
 module "env" {
-  source = "github.com/BasileTrujillo/terraform-elastic-beanstalk-php//eb-env"
+  source = "github.com/joecritch/terraform-elastic-beanstalk-php//eb-env"
   aws_region = "${var.aws_region}"
 
   # Application settings
@@ -87,7 +87,7 @@ module "env" {
 ## Route53 config
 ##################################################
 module "app_dns" {
-  source = "github.com/BasileTrujillo/terraform-elastic-beanstalk-php//r53-alias"
+  source = "github.com/joecritch/terraform-elastic-beanstalk-php//r53-alias"
   aws_region = "${var.aws_region}"
 
   domain = "example.io"
